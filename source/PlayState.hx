@@ -1037,7 +1037,12 @@ class PlayState extends MusicBeatState
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 				default:
-					startCountdown();
+					if (dialogueJson == null)
+						startCountdown();
+					else
+					{
+                        startDialogue(dialogueJson);
+					}
 			}
 			seenCutscene = true;
 		} else {
@@ -2278,12 +2283,28 @@ class PlayState extends MusicBeatState
 						{
 							case 0:
 								animToPlay = 'singLEFT';
+								if(health > 0.05)
+							{
+							health = 0.02;
+							}
 							case 1:
 								animToPlay = 'singDOWN';
+								if(health > 0.05)
+							{
+							health = 0.02;
+							}
 							case 2:
 								animToPlay = 'singUP';
+								if(health > 0.05)
+							{
+							health = 0.02;
+							}
 							case 3:
 								animToPlay = 'singRIGHT';
+								if(health > 0.05)
+							{
+							health = 0.02;
+							}
 						}
 						if(daNote.noteType == 'GF Sing') {
 							gf.playAnim(animToPlay + altAnim, true);
